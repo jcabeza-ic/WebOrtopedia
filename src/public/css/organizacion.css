@@ -1,0 +1,15 @@
+/* Ocupa todo el ancho y estilo sencillo para el contenido principal */
+body {
+    padding: 20px;
+    background-color: #D4EFDF; 
+    border-radius: 8px; /* Bordes redondeados */    
+    margin: 80px 0;
+    flex: 1; /* Hace que el contenido ocupe el espacio sobrante */
+}
+
+.contenido {
+    flex: 1; /* Expande el contenido para ocupar el espacio entre header y footer */
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}

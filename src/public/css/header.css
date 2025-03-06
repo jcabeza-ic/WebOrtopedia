@@ -1,0 +1,34 @@
+.cabecera {
+    background-color: #82E0AA; 
+    padding: 15px;
+    text-align: center;
+    text-align: center;
+    width: 100vw; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.cabecera h1 {
+    color: #1D8348;
+    font-size: 35px;
+    margin: 0;
+}
+
+
+nav {
+    margin-top: 20px;
+}
+
+nav a {
+    margin: 0 20px;
+    text-decoration: none;
+    color: #1D8348;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+nav a:hover {
+    color: #145A32; /* Color más oscuro al pasar el ratón */
+}

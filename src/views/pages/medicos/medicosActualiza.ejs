@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/altaMedicos.css">
+</head>
+
+<!-- NIVEL 1: -->
+<body>
+    <%- include('../../partials/header') %>
+    <form method="POST" action="/medicos/edita/<%=medico.id%>"> 
+        
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre" value="<%=medico.nombre%>" class="input-field" />
+        
+        <label for="apellido">Apellido</label>
+        <input type="text" name="apellido" id="apellido" value="<%=medico.apellido%>" class="input-field" />
+        
+        <label for="especialidad">Especialidad</label>
+        <input type="text" name="especialidad" id="especialidad" value="<%=medico.especialidad%>" class="input-field" />
+        
+        <label for="experiencia">Años de experiencia</label>
+        <input type="number" name="experiencia" id="experiencia" value="<%=medico.experiencia%>" class="input-field" />
+        
+        <label for="centro">Centro</label>
+        <input type="text" name="centro" id="centro" value="<%=medico.centro%>" class="input-field"/>
+        
+        <button type="submit" class="submit-button">Guardar</button>
+    </form>
+    <%- include('../../partials/footer') %>
+</body>
+</html>
+
+
+<!-- --------------------------------------------------------------------------------->
+<!--NIVEL 2: -->
+<!-- <body>
+    <%- include('../../partials/header') %>
+    <form method="POST" action="/medicos/edita/<%=medico.id%>"> 
+        
+        <label for="apellido">Apellido</label>
+        <input type="text" name="apellido" id="apellido" value="<%=medico.apellido%>"  />
+        <button type="submit">Guardar</button>
+        
+    </form>
+    <%- include('../../partials/footer') %>
+</body>
+</html> -->
+

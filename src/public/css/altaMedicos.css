@@ -1,0 +1,62 @@
+/* Ocupa todo el ancho y estilo sencillo para el contenido principal */
+body {
+    padding: 60px;
+    background-color: #D4EFDF; 
+    border-radius: 8px; /* Bordes redondeados */    
+    margin: 60px 0;
+    flex: 1; /* Hace que el contenido ocupe el espacio sobrante */
+}
+
+.contenido {
+    flex: 1; /* Expande el contenido para ocupar el espacio entre header y footer */
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Estilo del formulario */
+form {
+    background-color: #b2edcb;
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    border: 2px solid #45a049; /* Aquí se define el grosor (2px) y el estilo (solid) */
+}
+
+
+/* Estilo de las etiquetas */
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+/* Estilo de los campos de entrada */
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding-right: 0%;
+}
+
+/* Estilo del botón de submit */
+.submit-button {
+    background-color: #1D8348;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #156336;
+}
+
+  

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/altaMedicos.css">
+</head>
+<!--NIVEL 1:-->
+<body>
+    <%- include('../../partials/header') %>
+    <form method="POST" action="/medicos/alta">
+
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre" class="input-field"/>
+        <label for="apellido">Apellido</label>
+        <input type="text" name="apellido" id="apellido" class="input-field" />
+        <label for="especialidad">Especialidad</label>
+        <input type="text" name="especialidad" id="especialidad" class="input-field"/>
+        <label for="experiencia">Años de experiencia</label>
+        <input type="number" name="experiencia" id="experiencia" class="input-field"/>
+        <label for="centro">Centro</label>
+        <input type="text" name="centro" id="centro" class="input-field"/>
+        <button type="submit" class="submit-button">Guardar</button>
+    </form>
+    <%- include('../../partials/footer') %>
+</body>
+</html>
+
+<!----------------------------------------------------------------->
+<!--NIVEL 2:-->
+<!-- <body>
+    <%- include('../../partials/header') %>
+    <form method="POST" action="/medicos/alta">
+
+        <label for="apellido">Apellido</label>
+        <input type="text" name="apellido" id="apellido"  />
+
+        <button type="submit">Guardar</button>
+    </form>
+    <%- include('../../partials/footer') %>
+</body>
+</html> -->
+

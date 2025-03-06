@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/organizacion.css">
+  <title>Ortopedia Hamburgo - Médicos</title>
+</head>
+<body>
+  <!-- Incluir el encabezado -->
+  <%- include('../partials/header') %>
+
+  <main>
+    <h2>Información sobre la Organización</h2>
+    <ul>
+        <li>
+            <strong>Nombre de la organizacion:</strong> <%= organizacion.nombre %>
+        </li>
+        <li>
+            <strong>Teléfonos:</strong> <%= organizacion.telefono %>
+        </li>
+        <li>
+            <strong>Correo:</strong> <%= organizacion.correo %>
+        </li>
+    </ul>
+</main>
+
+
+  <!-- Incluir el pie de página -->
+  <%- include('../partials/footer') %>
+</body>
+</html>

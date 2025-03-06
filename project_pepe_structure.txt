@@ -1,0 +1,67 @@
+         
+    |   index.js
+    |   
+    +---data
+    |   |   medicos.js
+    |   |   organization.js
+    |   |   pacientes.js
+    |   |   patient.js
+    |   |   practitioner.js
+    |   |   
+    |   \---recursos
+    |       |   Organization.json
+    |       |   
+    |       +---patient
+    |       |       Carlos.json
+    |       |       Juan.json
+    |       |       Maria.json
+    |       |       
+    |       \---practitioner
+    |               Ana.json
+    |               Jose.json
+    |               Luis.json
+    |               
+    +---modelo
+    |       medicoModelo.js
+    |       organizationModelo.js
+    |       pacienteModelo.js
+    |       
+    +---public
+    |   |   informacion.html
+    |   |   
+    |   \---css
+    |           altaMedicos.css
+    |           altaPacientes.css
+    |           footer.css
+    |           header.css
+    |           informacion.css
+    |           inicio.css
+    |           medicos.css
+    |           organizacion.css
+    |           pacientes.css
+    |           
+    +---routes
+    |       indexRouter.js
+    |       medicosRouter.js
+    |       organizacionRouter.js
+    |       pacientesRouter.js
+    |       
+    \---views
+        +---pages
+        |   |   inicio.ejs
+        |   |   organizacion.ejs
+        |   |   
+        |   +---medicos
+        |   |       medicosActualiza.ejs
+        |   |       medicosAlta.ejs
+        |   |       medicosLista.ejs
+        |   |       
+        |   \---pacientes
+        |           pacientesActualiza.ejs
+        |           pacientesAlta.ejs
+        |           pacientesLista.ejs
+        |           
+        \---partials
+                footer.ejs
+                header.ejs
+                

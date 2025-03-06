@@ -1,0 +1,1877 @@
+
+C:\Users\Pepe\Desktop\Nivel4Final\src
+=====================================
+
+### escribir.py ###
+import os
+
+# Cambia esta ruta a la de tu proyecto
+project_path = r"C:\Users\Pepe\Desktop\Nivel4Final\src"
+print(project_path)
+output_file = "proyecto_completos.txt"
+
+with open(output_file, "w", encoding="utf-8") as output:
+    for root, dirs, files in os.walk(project_path):
+        output.write(f"\n{root}\n")
+        output.write("=" * len(root) + "\n")
+        for file in files:
+            file_path = os.path.join(root, file)
+            output.write(f"\n### {file} ###\n")
+            with open(file_path, "r", encoding="utf-8") as f:
+                output.write(f.read())
+                output.write("\n\n")
+
+print(f"Contenido del proyecto exportado a {output_file}")
+
+
+### index.js ###
+const express = require('express');
+const path = require('path');
+const app = express();
+const port = 3005;
+
+// Establecer EJS como motor de plantillas
+app.set('view engine', 'ejs');
+
+// Establecer la carpeta de vistas
+app.set('views', path.join(__dirname, 'views', 'pages'));
+
+// Servir archivos estáticos desde la carpeta public
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Rutas
+const indexRouter = require('./routes/indexRouter');
+app.use('/', indexRouter);
+
+app.listen(port, () => {
+  console.log(`Servidor escuchando en http://localhost:${port}`);
+});
+
+
+
+
+
+
+C:\Users\Pepe\Desktop\Nivel4Final\src\data
+==========================================
+
+### medicos.js ###
+// Array de médicos simulado
+const medicos = [
+    { id:'87451698K', nombre: 'Dr. José', apellido: 'Sánchez',especialidad: 'Traumatólogo', experiencia: 10, centro:'Ortopedia Hamburgo' },
+    { id:'12478156J', nombre: 'Dra. Ana ', apellido:'Martínez', especialidad: 'Reumatólogo', experiencia: 8, centro: 'Ortopedia Hamburgo' },
+    { id:'47516894U', nombre: 'Dr. Luis ', apellido: 'Fernández', especialidad: 'Podólogo', experiencia: 12, centro: 'Ortopedia Hamburgo' }
+];
+
+module.exports=medicos; 
+  
+
+
+### organization.js ###
+let organizacion = require("./recursos/Organization.json");
+
+
+module.exports = organizacion;
+
+
+
+### pacientes.js ###
+//Datos iniciales 
+// Array de pacientes simulado
+let pacientes = [
+    { id: '99262014P', nombre: 'Juan', apellido: 'Pérez', edad: 30, genero: 'hombre', direccion: 'Calle Levante, 5', patologia: 'Esguince' },
+    { id: '54821674M', nombre: 'María', apellido: 'Gómez', edad: 45, genero: 'mujer', direccion: 'Avenida Flor de papel, 12', patologia: 'Artrosis' },
+    { id: '01589426L', nombre: 'Carlos', apellido: 'López', edad: 60, genero: 'hombre', direccion: 'Calle Naranjo, 8', patologia: 'Escoliosis' }
+];
+
+  
+
+
+module.exports = pacientes;
+
+
+### patient.js ###
+let patient001 = require("../data/recursos/patient/Juan.json");
+let patient002 = require("../data/recursos/patient/Carlos.json");
+let patient003 = require("../data/recursos/patient/Maria.json");
+
+let pacientes = [patient001, patient002, patient003];
+
+module.exports = pacientes;
+
+
+
+### practitioner.js ###
+let practitioner001 = require("./recursos/practitioner/Ana.json");
+let practitioner002 = require("./recursos/practitioner/Jose.json");
+let practitioner003 = require("./recursos/practitioner/Luis.json");
+
+let medicos = [practitioner001, practitioner002, practitioner003];
+
+module.exports = medicos;
+
+
+
+C:\Users\Pepe\Desktop\Nivel4Final\src\data\recursos
+===================================================
+
+### Organization.json ###
+{
+  "resourceType": "Organization",
+  "name": "Ortopedia Hamburgo",
+  "contact": [
+      {
+          "telecom": [
+              { "system": "phone", "value": "654 757 033 | 601 488 868" },
+              { "system": "email", "value": "OrtopediaHamburgo@hotmail.com" }
+          ]
+      }
+  ]
+}
+
+
+
+C:\Users\Pepe\Desktop\Nivel4Final\src\data\recursos\patient
+===========================================================
+
+### Carlos.json ###
+{
+  "resourceType": "Patient",
+  "identifier": [
+    {
+      "system": "http://example.org/identifiers",
+      "value": "01589426L"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "López",
+      "given": ["Carlos"]
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-10-23",
+  "address": [
+    {
+      "text": "Calle Naranjo, 8"
+    }
+  ],
+  "extension": [
+    {
+      "url": "http://example.org/extensions/age",
+      "valueInteger": 60
+    },
+    {
+      "url": "http://example.org/extensions/pathology",
+      "valueString": "resfriado"
+    }
+  ]
+}
+
+
+### Juan.json ###
+{
+  "resourceType": "Patient",
+  "identifier": [
+    {
+      "system": "http://example.org/identifiers",
+      "value": "99262014P"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Pérez",
+      "given": ["Juan"]
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1978-08-20",
+  "address": [
+    {
+      "text": "Calle Levante, 5"
+    }
+  ],
+  "extension": [
+    {
+      "url": "http://example.org/extensions/age",
+      "valueInteger": 30
+    },
+    {
+      "url": "http://example.org/extensions/pathology",
+      "valueString": "resfriado"
+    }
+  ]
+}
+
+
+### Maria.json ###
+{
+  "resourceType": "Patient",
+  "identifier": [
+    {
+      "system": "http://example.org/identifiers",
+      "value": "54821674M"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Gómez",
+      "given": ["María"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-04-03",
+  "address": [
+    {
+      "text": "Avenida Flor de papel, 12"
+    }
+  ],
+  "extension": [
+    {
+      "url": "http://example.org/extensions/age",
+      "valueInteger": 45
+    },
+    {
+      "url": "http://example.org/extensions/pathology",
+      "valueString": "resfriado"
+    }
+  ]
+}
+
+
+C:\Users\Pepe\Desktop\Nivel4Final\src\data\recursos\practitioner
+================================================================
+
+### Ana.json ###
+{
+    "resourceType": "Practitioner",
+    "identifier": [
+      {
+        "system": "http://example.org/identifiers",
+        "value": "12478156J"
+      }
+    ],
+    "active": true,
+    "name": [
+      {
+        "use": "official",
+        "family": "Martínez",
+        "given": ["Ana"]
+      }
+    ],
+    "qualification": [
+      {
+        "code": {
+          "text": "Pediatra"
+        }
+      }
+    ],
+    "extension": [
+      {
+        "url": "http://example.org/extensions/experience",
+        "valueInteger": 8
+      },
+      {
+        "url": "http://example.org/extensions/center",
+        "valueString": "Hospital San José"
+      }
+    ]
+  }
+
+
+### Jose.json ###
+
+{
+      "resourceType": "Practitioner",
+      "identifier": [
+        {
+          "system": "http://example.org/identifiers",
+          "value": "87451698K"
+        }
+      ],
+      "active": true,
+      "name": [
+        {
+          "use": "official",
+          "family": "Sánchez",
+          "given": ["José"]
+        }
+      ],
+      "qualification": [
+        {
+          "code": {
+            "text": "Cardiólogo"
+          }
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://example.org/extensions/experience",
+          "valueInteger": 10
+        },
+        {
+          "url": "http://example.org/extensions/center",
+          "valueString": "Hospital San José"
+        }
+      ]
+    }
+
+
+### Luis.json ###
+{
+    "resourceType": "Practitioner",
+    "identifier": [
+      {
+        "system": "http://example.org/identifiers",
+        "value": "47516894U"
+      }
+    ],
+    "active": true,
+    "name": [
+      {
+        "use": "official",
+        "family": "Fernández",
+        "given": ["Luis"]
+      }
+    ],
+    "qualification": [
+      {
+        "code": {
+          "text": "Traumatólogo"
+        }
+      }
+    ],
+    "extension": [
+      {
+        "url": "http://example.org/extensions/experience",
+        "valueInteger": 12
+      },
+      {
+        "url": "http://example.org/extensions/center",
+        "valueString": "Hospital San José"
+      }
+    ]
+  }
+
+
+
+C:\Users\Pepe\Desktop\Nivel4Final\src\modelo
+============================================
+
+### medicoModelo.js ###
+//NIVEL1:
+let medicos = require("../data/medicos.js");
+const crypto = require("crypto");
+
+//Lógica de negocio
+
+//Función listar medicos 
+
+const medicoModelo = {
+    recuperaTodosLosMedicos(){
+        return medicos;
+    },
+
+    altaMedico(datosMedico){
+         //para añadir un id:
+        const id=crypto.randomUUID();
+        datosMedico["id"]=id;
+        medicos.push(datosMedico);
+    },
+
+    //Función para la actualización
+    recuperaIndexMedico(id){
+        const index = medicos.findIndex((e)=>{
+            return e.id === id;
+        })
+        return index;
+    },
+
+    recuperaMedico(id){
+        let medico = null;
+
+        const index = medicos.findIndex((e)=>{
+            return e.id == id;
+        });
+
+        if(index>=0){
+            medico=medicos[index]//tenemos un array de medico 
+            //index hace referencia a la posición en el array que ocupa el medico
+        }else{
+            console.log("Médico no encontrado");
+        }
+        return medico;
+    },
+
+    actualizaMedico(id, datosMedico){
+
+        const idx = this.recuperaIndexMedico(id);
+
+        if(idx>=0){
+            medicos[idx]={id, ...datosMedico};//los 3 . sirven para concatenar la info que se obtiene con idMedico con la que se obtiene recopilada de pantalla
+        }
+    },
+
+    bajaMedico(id){
+        medicos=medicos.filter((e)=>{
+            return e.id!=id;
+        });
+    }
+
+};
+
+module.exports=medicoModelo;
+
+
+
+//------------------------------------------------------------
+//NIVEL 2:
+
+// let medicos = require("../data/practitioner");
+// const crypto = require("crypto");
+
+// // Lógica de negocio
+
+// const medicoModelo = {
+//     // Función listar médicos
+//     recuperaTodosLosMedicos() {
+//         return medicos.map((practitioner) => {
+//             return {
+//                 id: practitioner.identifier[0].value,
+//                 apellido: practitioner.name[0].family
+//             };
+//         });
+//     },
+
+//     // Alta de un nuevo médico
+//     altaMedico(datosMedico) {
+//         // Para añadir un id:
+//         const id = crypto.randomUUID();
+//         const nuevoMedico = {
+//             resourceType: "Practitioner",
+//             identifier: [{value: id }],
+//             active: true,
+//             name: [{ use: "official", family: datosMedico.apellido }]
+//         };
+//         medicos.push(nuevoMedico);
+//     },
+
+//     // Función para la actualización: recuperar índice
+//     recuperaIndexMedico(id) {
+//         const index = medicos.findIndex((practitioner) => {
+//             return practitioner.identifier[0].value === id;
+//         });
+//         return index;
+//     },
+
+//     // Recuperar un médico específico
+//     recuperaMedico(id) {
+//         let medico = null;
+
+//         const index = this.recuperaIndexMedico(id);
+
+//         if (index >= 0) {
+//             const practitioner = medicos[index];
+//             medico = {
+//                 id: practitioner.identifier[0].value,
+//                 apellido: practitioner.name[0].family
+//             };
+//         } else {
+//             console.log("Médico no encontrado");
+//         }
+//         return medico;
+//     },
+
+//     // Actualizar un médico existente
+//     actualizaMedico(id, datosMedico) {
+//         const idx = this.recuperaIndexMedico(id);
+
+//         if (idx >= 0) {
+//             medicos[idx].name[0].family = datosMedico.apellido; // Solo actualiza el apellido
+//         }
+//     },
+
+//     // Eliminar un médico
+//     bajaMedico(id) {
+//         medicos = medicos.filter((e) => {
+//             return e.identifier[0].value !== id;
+//         });
+//     }
+// };
+
+// module.exports = medicoModelo;
+
+
+### organizationModelo.js ###
+let organizacion = require("../data/organization");
+
+const organizacionModelo = {
+    recuperaTodaLaInfoOrg() {
+        return organizacion
+    }
+};
+
+module.exports = organizacionModelo;
+
+
+
+### pacienteModelo.js ###
+//NIVEL 1:
+
+let pacientes = require("../data/pacientes.js");
+const crypto = require("crypto");
+
+//Lógica de negocio
+
+//Función listar pacientes 
+
+const pacienteModelo = {
+    
+    recuperaTodosLosPacientes(){
+        return pacientes;
+    },
+
+    altaPaciente(datosPaciente){
+        //para añadir un id:
+        const id=crypto.randomUUID();
+        datosPaciente["id"]=id;
+        pacientes.push(datosPaciente);
+    },
+
+    //Función para la actualización
+    recuperaIndexPaciente(id){ //recupera la posición en la que está el paciente
+        const index = pacientes.findIndex((e)=>{
+            return e.id === id; 
+        })
+        return index;
+    },
+
+    recuperaPaciente(id){ //recupera el paciente que está en una determinada posición
+        let panciente = null; 
+
+        const index = pacientes.findIndex((e) =>{
+            return e.id === id;
+        });
+
+        if(index>=0){
+            paciente=pacientes[index] //tenemos un array de paciente 
+            //index hace referencia a la posición en el array que ocupa el paciente
+        }else{
+            console.log("Paciente no encontrado");
+        }
+        return paciente;
+    },
+
+    actualizaPaciente(id, datosPaciente){
+        const idx = this.recuperaIndexPaciente(id);
+
+        if(idx>=0){
+            pacientes[idx]={id, ...datosPaciente}; //los 3 . sirven para concatenar la info que se obtiene con idPaciente con la que se obtiene recopilada de pantalla
+        }
+    },
+
+    bajaPaciente(id){
+        pacientes=pacientes.filter((e)=>{
+            return e.id!=id; 
+        });
+    }
+};
+
+module.exports=pacienteModelo;
+
+//-------------------------------------------------------
+//NIVEL 3:
+// let pacientes = require("../data/patient");
+// const crypto = require("crypto");
+
+// //Lógica de negocio
+
+// //Función listar pacientes 
+
+// const pacienteModelo = {
+    
+//     recuperaTodosLosPacientes(){
+//         return pacientes.map((e) => {
+//             return {
+//                 id:e.identifier[0].value,
+//                 apellido: e.name[0].family,
+//                 fecha: e.birthDate,
+//                 genero: e.gender
+//             }
+//         });
+//     },
+
+//     altaPaciente(datosPaciente){
+//         //para añadir un id:
+//         const id=crypto.randomUUID();
+//         const nuevoPaciente = {
+//             resourceType: "Patient",
+//             identifier: [{ value: id }],
+//             active: true,
+//             name: [{ use: "official", family: datosPaciente.apellido }],
+//             birthDate: datosPaciente.fecha, gender: datosPaciente.genero
+//         };
+//         pacientes.push(nuevoPaciente);
+//     },
+
+//     //Función para la actualización
+//     recuperaIndexPaciente(id){ //recupera la posición en la que está el paciente
+//         const index = pacientes.findIndex((e)=>{
+//             return e.identifier[0].value === id; 
+//         })
+//         return index;
+//     },
+
+//     recuperaPaciente(id){ //recupera el paciente que está en una determinada posición
+//         let panciente = null; 
+
+//         const index = this.recuperaIndexPaciente(id);
+
+//         if(index>=0){
+//             const patient = pacientes[index];
+//             paciente = {
+//                 id: patient.identifier[0].value,
+//                 apellido: patient.name[0].family,
+//                 fecha: patient.birthDate,
+//                 genero: patient.gender
+//             };
+//         }else{
+//             console.log("Paciente no encontrado");
+//         }
+//         return paciente;
+//     },
+
+//     actualizaPaciente(id, datosPaciente){
+//         const idx = this.recuperaIndexPaciente(id);
+
+//         if(idx>=0){
+//             pacientes[idx].name[0].family = datosPaciente.apellido,
+//             pacientes[idx].birthDate[0] = datosPaciente.fecha,
+//             pacientes[idx].gender = datosPaciente.genero;
+//         }
+//     },
+
+//     bajaPaciente(id){
+//         pacientes=pacientes.filter((e)=>{
+//             return e.identifier[0].value !== id; 
+//         });
+//     }
+// };
+
+// module.exports=pacienteModelo;
+
+
+C:\Users\Pepe\Desktop\Nivel4Final\src\public
+============================================
+
+C:\Users\Pepe\Desktop\Nivel4Final\src\public\css
+================================================
+
+### altaMedicos.css ###
+/* Ocupa todo el ancho y estilo sencillo para el contenido principal */
+body {
+    padding: 60px;
+    background-color: #D4EFDF; 
+    border-radius: 8px; /* Bordes redondeados */    
+    margin: 60px 0;
+    flex: 1; /* Hace que el contenido ocupe el espacio sobrante */
+}
+
+.contenido {
+    flex: 1; /* Expande el contenido para ocupar el espacio entre header y footer */
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Estilo del formulario */
+form {
+    background-color: #b2edcb;
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    border: 2px solid #45a049; /* Aquí se define el grosor (2px) y el estilo (solid) */
+}
+
+
+/* Estilo de las etiquetas */
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+/* Estilo de los campos de entrada */
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding-right: 0%;
+}
+
+/* Estilo del botón de submit */
+.submit-button {
+    background-color: #1D8348;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #156336;
+}
+
+
+
+
+### altaPacientes.css ###
+/* Ocupa todo el ancho y estilo sencillo para el contenido principal */
+/* Ocupa todo el ancho y estilo sencillo para el contenido principal */
+body {
+    padding: 60px;
+    background-color: #D4EFDF; 
+    border-radius: 8px; /* Bordes redondeados */    
+    margin: 60px 0;
+    flex: 1; /* Hace que el contenido ocupe el espacio sobrante */
+}
+
+.contenido {
+    flex: 1; /* Expande el contenido para ocupar el espacio entre header y footer */
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Estilo del formulario */
+form {
+    background-color: #b2edcb;
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    border: 2px solid #45a049; /* Aquí se define el grosor (2px) y el estilo (solid) */
+}
+
+
+/* Estilo de las etiquetas */
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+/* Estilo de los campos de entrada */
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding-right: 0%;
+}
+
+/* Estilo del botón de submit */
+.submit-button {
+    background-color: #1D8348;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #156336;
+}
+
+
+
+
+
+### footer.css ###
+/* Footer centrado en la parte inferior */
+.pie {
+    background-color: #58D68D; /* Verde pastel */
+    color: #333333;
+    text-align: center; /* Centra el texto dentro del contenedor */
+    padding: 15px 0; /* Espaciado vertical */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Hace que ocupe todo el ancho de la página */
+    font-size: 14px;
+}
+
+
+
+### header.css ###
+.cabecera {
+    background-color: #82E0AA; 
+    padding: 15px;
+    text-align: center;
+    text-align: center;
+    width: 100vw; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.cabecera h1 {
+    color: #1D8348;
+    font-size: 35px;
+    margin: 0;
+}
+
+
+nav {
+    margin-top: 20px;
+}
+
+nav a {
+    margin: 0 20px;
+    text-decoration: none;
+    color: #1D8348;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+nav a:hover {
+    color: #145A32; /* Color más oscuro al pasar el ratón */
+}
+
+
+### informacion.css ###
+body {
+    padding: 20px;
+    background-color: #D4EFDF; 
+    border-radius: 8px; /* Bordes redondeados */    
+    margin: 20px 0;
+    flex: 1; /* Hace que el contenido ocupe el espacio sobrante */
+}
+
+.contenido {
+    flex: 1; /* Expande el contenido para ocupar el espacio entre header y footer */
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.cabecera {
+    background-color: #82E0AA; 
+    padding: 15px;
+    text-align: center;
+    text-align: center;
+    width: 100vw; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.cabecera h1 {
+    color: #1D8348;
+    font-size: 35px;
+    margin: 0;
+}
+
+
+nav {
+    margin-top: 15px;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #1D8348;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+nav a:hover {
+    color: #145A32; /* Color más oscuro al pasar el ratón */
+}
+
+.contenido {
+    padding: 60px;
+    text-align: left;
+    margin: 0 auto;
+    width: 60%;
+    flex: 1; /* Permite que el contenido crezca para ocupar el espacio disponible */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: #ABEBC6; 
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.pie {
+    background-color: #58D68D; /* Verde pastel */
+    color: #333333;
+    text-align: center; /* Centra el texto dentro del contenedor */
+    padding: 15px 0; /* Espaciado vertical */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Hace que ocupe todo el ancho de la página */
+    font-size: 14px;
+}
+
+
+### inicio.css ###
+/* Ocupa todo el ancho y estilo sencillo para el contenido principal */
+body {
+    padding: 20px;
+    background-color: #D4EFDF; 
+    border-radius: 8px; /* Bordes redondeados */    
+    margin: 60px 0;
+    flex: 1; /* Hace que el contenido ocupe el espacio sobrante */
+}
+
+.contenido {
+    flex: 1; /* Expande el contenido para ocupar el espacio entre header y footer */
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.caja {
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #d9ede1;
+    opacity: 0; /* Inicialmente invisible */
+    transform: translateY(50px); /* Desplazada hacia abajo */
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Colores para cada sección */
+.bienvenida {
+    background-color: #e6f0ea;
+    text-align: center;
+}
+
+.menor {
+    padding-left: 5%;
+}
+
+
+/* Cuando la caja es visible en pantalla */
+.caja.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.caja.inicial {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+
+
+
+
+### medicos.css ###
+body {
+    padding: 20px;
+    background-color: #D4EFDF; 
+    border-radius: 8px; /* Bordes redondeados */    
+    margin: 80px 0;
+    flex: 1; /* Hace que el contenido ocupe el espacio sobrante */
+}
+
+.contenido {
+    flex: 1; /* Expande el contenido para ocupar el espacio entre header y footer */
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Estilos generales para los botones */
+.boton {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px;
+    text-decoration: none;
+    
+    border: 2px solid; /* Borde con color específico */
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+    background-color: #82E0AA; /* Verde oscuro consistente */
+    color: #000000; /* Texto blanco */
+    text-align: center;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+/* Botón Editar: borde azul */
+.boton-editar {
+    border-color: #3498DB; /* Azul */
+}
+
+.boton-editar:hover {
+    background-color: #1F618D; /* Azul más oscuro al pasar el ratón */
+    color: #ffffff
+}
+
+/* Botón Eliminar: borde rojo */
+.boton-eliminar {
+    border-color: #E74C3C; /* Rojo */
+}
+
+.boton-eliminar:hover {
+    background-color: #922B21; /* Rojo más oscuro al pasar el ratón */
+    color: #ffffff
+}
+
+/* Botón Crear: borde verde */
+.boton-crear {
+    border-color: #58D68D; /* Verde */
+}
+
+.boton-crear:hover {
+    background-color: #145A32; /* Verde más oscuro al pasar el ratón */
+    color: #ffffff
+}
+
+/* Ajuste responsivo */
+@media (max-width: 600px) {
+    .boton {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}
+
+.caja {
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #d9ede1;
+}
+
+.margen{
+    padding-left: 0%;
+}
+
+
+
+### organizacion.css ###
+/* Ocupa todo el ancho y estilo sencillo para el contenido principal */
+body {
+    padding: 20px;
+    background-color: #D4EFDF; 
+    border-radius: 8px; /* Bordes redondeados */    
+    margin: 80px 0;
+    flex: 1; /* Hace que el contenido ocupe el espacio sobrante */
+}
+
+.contenido {
+    flex: 1; /* Expande el contenido para ocupar el espacio entre header y footer */
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+
+### pacientes.css ###
+body {
+    padding: 20px;
+    background-color: #D4EFDF; 
+    border-radius: 8px; /* Bordes redondeados */    
+    margin: 80px 0;
+    flex: 1; /* Hace que el contenido ocupe el espacio sobrante */
+}
+
+.contenido {
+    flex: 1; /* Expande el contenido para ocupar el espacio entre header y footer */
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Estilos generales para los botones */
+.boton {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px;
+    text-decoration: none;
+    
+    border: 2px solid; /* Borde con color específico */
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+    background-color: #82E0AA; /* Verde oscuro consistente */
+    color: #000000; /* Texto blanco */
+    text-align: center;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+/* Botón Editar: borde azul */
+.boton-editar {
+    border-color: #3498DB; /* Azul */
+}
+
+.boton-editar:hover {
+    background-color: #1F618D; /* Azul más oscuro al pasar el ratón */
+    color: #ffffff
+}
+
+/* Botón Eliminar: borde rojo */
+.boton-eliminar {
+    border-color: #E74C3C; /* Rojo */
+}
+
+.boton-eliminar:hover {
+    background-color: #922B21; /* Rojo más oscuro al pasar el ratón */
+    color: #ffffff
+}
+
+/* Botón Crear: borde verde */
+.boton-crear {
+    border-color: #58D68D; /* Verde */
+}
+
+.boton-crear:hover {
+    background-color: #145A32; /* Verde más oscuro al pasar el ratón */
+    color: #ffffff
+}
+
+/* Ajuste responsivo */
+@media (max-width: 600px) {
+    .boton {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}
+
+.caja {
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #d9ede1;
+}
+
+.margen{
+    padding-left: 0%;
+}
+
+
+### scroll.js ###
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("scroll.js cargado correctamente"); 
+
+    const cajas = document.querySelectorAll(".caja:not(.inicial)"); // Solo las que no son iniciales
+
+    const mostrarCajas = () => {
+        cajas.forEach((caja) => {
+            const rect = caja.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+
+            if (rect.top < windowHeight * 0.85) { 
+                caja.classList.add("visible");
+            }
+        });
+    };
+
+    // Llamamos a la función cuando se carga la página y al hacer scroll
+    mostrarCajas();
+    window.addEventListener("scroll", mostrarCajas);
+});
+
+
+
+C:\Users\Pepe\Desktop\Nivel4Final\src\routes
+============================================
+
+### indexRouter.js ###
+const express = require('express');
+const router = express.Router();
+
+// Importamos las rutas de pacientes y médicos
+const pacientesRouter = require('./pacientesRouter');
+const medicosRouter = require('./medicosRouter');
+const organizacionRouter = require('./organizacionRouter')
+
+// Ruta de inicio
+router.get('/', (req, res) => {
+  res.render('inicio'); // Se renderiza la vista 'inicio.ejs'
+});
+
+// Montamos las rutas para pacientes y médicos
+router.use('/pacientes', pacientesRouter);
+router.use('/medicos', medicosRouter);
+router.use('/organizacion', organizacionRouter);
+
+// Ruta para manejar 404 (cuando no se encuentra la página)
+router.all('*', (req, res) => {
+  res.status(404);
+  res.render('/inicio', {mensaje:'Página no encontrada'});
+});
+
+
+
+module.exports = router;
+
+
+
+### medicosRouter.js ###
+const express = require('express');
+const routerMedicos = express.Router();
+const modelo = require("../modelo/medicoModelo.js");
+
+routerMedicos.use(express.urlencoded({extended:true}));
+
+// Ruta para listar medicos
+routerMedicos.get('/', (req, res) => {
+  const medicos=modelo.recuperaTodosLosMedicos(); 
+  res.render('medicos/medicosLista', { medicos }); // Pasamos los medicos a la vista
+});
+
+//Ruta para alta médico
+//GET --> mostrar la página de creación de médicos
+routerMedicos.get('/alta', (req,res)=>{
+  res.render('medicos/medicosAlta');
+});
+
+//POST --> Obtener los datos incorporados en la página de creación
+routerMedicos.post('/alta', (req,res)=>{
+  // Añadimos al médico al almacén
+  // NIVEL 1:
+  const medico = {nombre:req.body.nombre, apellido:req.body.apellido, especialidad:req.body.especialidad, experiencia:parseInt(req.body.experiencia), centro:req.body.centro};
+  
+  //--------------------------------------------------------------------------------------------------
+  //NIVEL 2:
+//   const medico = {apellido:req.body.apellido};
+  modelo.altaMedico(medico);
+  res.redirect("/medicos")
+});
+
+//Ruta para actualizar medicos
+
+//GET --> Mostrar la vista de actualización
+
+routerMedicos.get('/edita/:id', (req,res)=>{
+  const idMedico = req.params.id;
+  const medico = modelo.recuperaMedico(idMedico)
+  res.render('medicos/medicosActualiza', {medico})
+});
+
+//POST --> Actualizar la información del médico
+routerMedicos.post('/edita/:id',(req, res)=>{
+  const idMedico = req.params.id;
+  modelo.actualizaMedico(idMedico, req.body);
+  res.redirect('/medicos');
+});
+
+//Ruta para eliminar medicos
+
+routerMedicos.get('/baja/:id', (req, res)=>{
+  const idMedico = req.params.id;
+  modelo.bajaMedico(idMedico);
+  res.redirect('/medicos');
+});
+
+module.exports = routerMedicos;
+
+
+
+
+### organizacionRouter.js ###
+const express = require('express');
+const routerOrganizacion = express.Router();
+const organizacionModelo = require('../modelo/organizationModelo');
+
+routerOrganizacion.use(express.urlencoded({extended:true}));
+
+
+routerOrganizacion.get('/', (req, res) => {
+    const organizacion = organizacionModelo.recuperaTodaLaInfoOrg();
+    const diccionario = {
+        nombre: organizacion.name,
+        telefono: organizacion.contact?.[0]?.telecom?.find((t) => t.system === "phone")?.value || "Teléfono no disponible",
+        correo: organizacion.contact?.[0]?.telecom?.find((t) => t.system === "email")?.value || "Correo no disponible"
+    }
+    res.render('organizacion', { organizacion: diccionario});
+});
+
+module.exports = routerOrganizacion;
+
+
+
+### pacientesRouter.js ###
+const express = require('express');
+const routerPacientes = express.Router();
+const modelo = require("../modelo/pacienteModelo.js");
+
+routerPacientes.use(express.urlencoded({extended:true}));
+
+// Ruta para listar pacientes
+routerPacientes.get('/', (req, res) => {
+  const pacientes=modelo.recuperaTodosLosPacientes(); 
+  res.render('pacientes/pacientesLista', { pacientes }); // Pasamos los pacientes a la vista
+});
+
+//Ruta para alta paciente 
+
+//GET --> mostrar la página de creación de pacientes
+routerPacientes.get('/alta', (req,res)=>{
+  res.render('pacientes/pacientesAlta'); 
+});
+
+//POST --> Obtener los datos incorporados en la página de creación
+routerPacientes.post('/alta', (req,res)=>{
+  // Añadimos al paciente al almacén
+
+  //PARA NIVEL 1:
+  const paciente = {nombre:req.body.nombre, apellido:req.body.apellido, edad:parseInt(req.body.edad), genero:req.body.genero, direccion:req.body.direccion, patologia:req.body.patologia};
+
+  //--------------------------------------------------------------------------------------------------------
+  //PARA NIVEL 3:
+  // const paciente = {apellido:req.body.apellido, fecha: req.body.fecha, genero: req.body.genero};
+  modelo.altaPaciente(paciente);
+  res.redirect("/pacientes")
+});
+
+//Ruta para actualizar pacientes
+
+//GET --> Mostrar la vista de actualización
+
+routerPacientes.get('/edita/:id', (req,res)=>{
+  const idPaciente = req.params.id;
+  const paciente = modelo.recuperaPaciente(idPaciente)
+  res.render('pacientes/pacientesActualiza', {paciente})
+});
+
+//POST --> Actualizar la información del paciente
+routerPacientes.post('/edita/:id',(req, res)=>{
+  const idPaciente = req.params.id;
+  modelo.actualizaPaciente(idPaciente, req.body);
+  res.redirect('/pacientes');
+});
+
+
+//Ruta para eliminar pencientes
+
+routerPacientes.get('/baja/:id', (req, res)=>{
+  const idPaciente = req.params.id;
+  modelo.bajaPaciente(idPaciente);
+  res.redirect('/pacientes');
+});
+
+
+module.exports = routerPacientes;
+
+
+
+C:\Users\Pepe\Desktop\Nivel4Final\src\views
+===========================================
+
+C:\Users\Pepe\Desktop\Nivel4Final\src\views\pages
+=================================================
+
+### inicio.ejs ###
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/inicio.css">
+  <title>Ortopedia Hamburgo - Inicio</title>
+</head>
+<body>
+  <!-- Incluir el menú de navegación -->
+  <%- include('../partials/header') %>
+
+  <main class="contenido">
+    <div class="caja bienvenida inicial">
+      <h2>🌟 Bienvenidos a Ortopedia Hamburgo</h2>
+      <p>Innovación ortopédica para una vida sin límites.</p>
+  </div>
+  
+  <div class="caja menor">
+      <h3>📍 ¿Dónde estamos?</h3>
+      <p>Estamos ubicados en la Calle Santa Fe, 17, Parque de los Príncipes, Sevilla.</p>
+  </div>
+  
+  <div class="caja menor">
+      <h3>⚙️ ¿Qué ofrecemos?</h3>
+      <ul>
+          <li>Prótesis y ortesis personalizadas impresas en 3D.</li>
+          <li>Dispositivos ortopédicos de última generación.</li>
+          <li>Evaluación y ajuste personalizado.</li>
+          <li>Asesoramiento continuo y atención 24/7.</li>
+          <li>Atención personalizada a deportistas de élite.</li>
+      </ul>
+  </div>
+  
+  <div class="caja menor">
+      <h3>🤝 ¿Quiénes somos?</h3>
+      <p>Somos Eva Artigas y Gabriela Vélez, profesionales en Ortoprótesis y Productos de Apoyo.</p>
+  </div>
+  
+  <div class="caja menor">
+      <h3>🌿 Nuestro Compromiso</h3>
+      <ul>
+          <li>Innovación: Impresión 3D para productos personalizados.</li>
+          <li>Sostenibilidad: Producción responsable y sin desperdicios.</li>
+          <li>Inclusión: Programa de donación para personas vulnerables.</li>
+      </ul>
+  </div>
+  
+  </main>
+
+  <!-- Incluir el pie de página -->
+  <%- include('../partials/footer') %>
+  <script src="/css/scroll.js"></script>
+</body>
+</html>
+
+
+
+### organizacion.ejs ###
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/organizacion.css">
+  <title>Ortopedia Hamburgo - Médicos</title>
+</head>
+<body>
+  <!-- Incluir el encabezado -->
+  <%- include('../partials/header') %>
+
+  <main>
+    <h2>Información sobre la Organización</h2>
+    <ul>
+        <li>
+            <strong>Nombre de la organizacion:</strong> <%= organizacion.nombre %>
+        </li>
+        <li>
+            <strong>Teléfonos:</strong> <%= organizacion.telefono %>
+        </li>
+        <li>
+            <strong>Correo:</strong> <%= organizacion.correo %>
+        </li>
+    </ul>
+</main>
+
+
+  <!-- Incluir el pie de página -->
+  <%- include('../partials/footer') %>
+</body>
+</html>
+
+
+
+C:\Users\Pepe\Desktop\Nivel4Final\src\views\pages\medicos
+=========================================================
+
+### medicosActualiza.ejs ###
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/altaMedicos.css">
+</head>
+
+<!-- NIVEL 1: -->
+<body>
+    <%- include('../../partials/header') %>
+    <form method="POST" action="/medicos/edita/<%=medico.id%>"> 
+        
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre" value="<%=medico.nombre%>" class="input-field" />
+        
+        <label for="apellido">Apellido</label>
+        <input type="text" name="apellido" id="apellido" value="<%=medico.apellido%>" class="input-field" />
+        
+        <label for="especialidad">Especialidad</label>
+        <input type="text" name="especialidad" id="especialidad" value="<%=medico.especialidad%>" class="input-field" />
+        
+        <label for="experiencia">Años de experiencia</label>
+        <input type="number" name="experiencia" id="experiencia" value="<%=medico.experiencia%>" class="input-field" />
+        
+        <label for="centro">Centro</label>
+        <input type="text" name="centro" id="centro" value="<%=medico.centro%>" class="input-field"/>
+        
+        <button type="submit" class="submit-button">Guardar</button>
+    </form>
+    <%- include('../../partials/footer') %>
+</body>
+</html>
+
+
+<!-- --------------------------------------------------------------------------------->
+<!--NIVEL 2: -->
+<!-- <body>
+    <%- include('../../partials/header') %>
+    <form method="POST" action="/medicos/edita/<%=medico.id%>"> 
+        
+        <label for="apellido">Apellido</label>
+        <input type="text" name="apellido" id="apellido" value="<%=medico.apellido%>"  />
+        <button type="submit">Guardar</button>
+        
+    </form>
+    <%- include('../../partials/footer') %>
+</body>
+</html> -->
+
+
+
+
+### medicosAlta.ejs ###
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/altaMedicos.css">
+</head>
+<!--NIVEL 1:-->
+<body>
+    <%- include('../../partials/header') %>
+    <form method="POST" action="/medicos/alta">
+
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre" class="input-field"/>
+        <label for="apellido">Apellido</label>
+        <input type="text" name="apellido" id="apellido" class="input-field" />
+        <label for="especialidad">Especialidad</label>
+        <input type="text" name="especialidad" id="especialidad" class="input-field"/>
+        <label for="experiencia">Años de experiencia</label>
+        <input type="number" name="experiencia" id="experiencia" class="input-field"/>
+        <label for="centro">Centro</label>
+        <input type="text" name="centro" id="centro" class="input-field"/>
+        <button type="submit" class="submit-button">Guardar</button>
+    </form>
+    <%- include('../../partials/footer') %>
+</body>
+</html>
+
+<!----------------------------------------------------------------->
+<!--NIVEL 2:-->
+<!-- <body>
+    <%- include('../../partials/header') %>
+    <form method="POST" action="/medicos/alta">
+
+        <label for="apellido">Apellido</label>
+        <input type="text" name="apellido" id="apellido"  />
+
+        <button type="submit">Guardar</button>
+    </form>
+    <%- include('../../partials/footer') %>
+</body>
+</html> -->
+
+
+
+
+### medicosLista.ejs ###
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/medicos.css">
+  <title>Ortopedia Hamburgo - Médicos</title>
+</head>
+<!--NIVEL 1: -->
+<body>
+
+  <%- include('../../partials/header') %>
+
+  <main>
+    <h2>Listado de Médicos</h2>
+    <ul class="margen">
+      <% medicos.forEach(function(medico) { %>
+          <ul>
+            <div class="caja menor">
+            <a href="./medicos/edita/<%=medico.id%>" class="boton boton-editar">Editar </a>
+            <a href="./medicos/baja/<%=medico.id%>" class="boton boton-eliminar">Eliminar </a> 
+            <%= medico.nombre %> <%= medico.apellido %> || <%= medico.especialidad %> (<%= medico.experiencia %> años de experiencia) || <%= medico.centro %>
+          </ul>
+        <% }); %>
+      </div>
+    </ul>
+  </main>
+  <a href="./medicos/alta" class="boton boton-crear">Crear médicos</a>
+
+  <%- include('../../partials/footer') %>
+
+</body>
+</html>
+
+<!---------------------------------------------------------->
+<!--NIVEL 2: -->
+<!-- <body>
+  <%- include('../../partials/header') %>
+
+  <main>
+    <h2>Listado de Apellidos de Médicos</h2>
+    <ul>
+      <% medicos.forEach(function(medico) { %>
+        <li>
+          <strong>Apellido:</strong> <%= medico.apellido %>
+          <a href="/medicos/edita/<%= medico.id %>" class="boton boton-editar">Editar</a>
+          <a href="/medicos/baja/<%= medico.id %>" class="boton boton-eliminar">Eliminar</a>
+        </li>
+      <% }); %>
+    </ul>
+    <a href="/medicos/alta" class="boton boton-crear">Crear nuevo médico</a>
+  </main>
+  
+  <%- include('../../partials/footer') %>
+</body>
+</html> -->
+
+
+
+C:\Users\Pepe\Desktop\Nivel4Final\src\views\pages\pacientes
+===========================================================
+
+### pacientesActualiza.ejs ###
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/altaPacientes.css">
+</head>
+
+<!-- NIVEL 1:-->
+<body>
+    <%- include('../../partials/header') %>
+    <form method="POST" action="/pacientes/edita/<%=paciente.id%>"> 
+        
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre" value="<%=paciente.nombre%>" class="input-field"/>
+        <label for="apellido">Apellido</label>
+        <input type="text" name="apellido" id="apellido" value="<%=paciente.apellido%>" class="input-field"/>
+        <label for="edad">Edad</label>
+        <input type="number" name="edad" id="edad" value="<%=paciente.edad%>" class="input-field"/>
+        <label for="genero">Genero</label>
+        <input type="text" name="genero" id="genero" value="<%=paciente.genero%>" class="input-field"/>
+        <label for="direccion">Dirección</label>
+        <input type="text" name="direccion" id="direccion" value="<%=paciente.direccion%>" class="input-field"/>
+        <label for="patologia">Patología</label>
+        <input type="text" name="patologia" id="patologia" value="<%=paciente.patologia%>" class="input-field"/>
+        <button type="submit" class="submit-button">Guardar</button>
+    </form>
+    <%- include('../../partials/footer') %>
+</body>
+</html>
+
+<!--------------------------------------------------->
+<!--NIVEL 3:-->
+<!-- <body>
+    <%- include('../../partials/header') %>
+    <form method="POST" action="/pacientes/edita/<%=paciente.id%>"> 
+        
+        <label for="apellido">Apellido</label>
+        <input type="text" name="apellido" id="apellido" value="<%=paciente.apellido%>" />
+        <label for="fecha">Fecha de nacimiento</label>
+        <input type="date" name="fecha" id="fecha" value="<%=paciente.fecha%>"/>
+        <label for="genero">Género</label>
+        <select name="genero" id="genero">
+            <option value="male" <%= paciente.gender === 'male' ? 'selected' : '' %>>Hombre</option>
+            <option value="female" <%= paciente.gender === 'female' ? 'selected' : '' %>>Mujer</option>
+            <option value="prefiero no decirlo" <%= paciente.gender === 'prefiero no decirlo' ? 'selected' : '' %>>Prefiero no decirlo</option>
+            <option value="otro" <%= paciente.gender === 'otro' ? 'selected' : '' %>>Otro</option>
+        </select>
+        
+        <button type="submit">Guardar</button>
+    </form>
+    <%- include('../../partials/footer') %>
+</body>
+</html> -->
+
+
+
+### pacientesAlta.ejs ###
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/altaPacientes.css">
+</head>
+
+<!--NIVEL 1:-->
+<body>
+    <%- include('../../partials/header') %>
+    <form method="POST" action="/pacientes/alta">
+
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre" class="input-field"/>
+        <label for="apellido">Apellido</label>
+        <input type="text" name="apellido" id="apellido"  class="input-field"/>
+        <label for="edad">Edad</label>
+        <input type="number" name="edad" id="edad" class="input-field"/>
+        <label for="genero">Genero</label>
+        <input type="text" name="genero" id="genero" class="input-field"/>
+        <label for="direccion">Dirección</label>
+        <input type="text" name="direccion" id="direccion" class="input-field"/>
+        <label for="patologia">Patología</label>
+        <input type="text" name="patologia" id="patologia" class="input-field"/>
+        <button type="submit" class="submit-button">Guardar</button>
+    </form>
+    <%- include('../../partials/footer') %>
+</body>
+</html>
+
+<!--------------------------------------------------->
+<!--NIVEL 3:-->
+<!-- <body>
+    <%- include('../../partials/header') %>
+    <form method="POST" action="/pacientes/alta">
+
+        <label for="apellido">Apellido</label>
+        <input type="text" name="apellido" id="apellido" />
+        <label for="fecha">Fecha de nacimiento</label>
+        <input type="date" name="fecha" id="fecha" />
+        <label for="genero">Género</label>
+        <select name="genero" id="genero">
+            <option value="male" >Hombre</option>
+            <option value="female" >Mujer</option>
+            <option value="unknown" >Prefiero no decirlo</option>
+            <option value="other" >Otro</option>
+        </select>
+        <button type="submit">Guardar</button>
+    </form>
+    <%- include('../../partials/footer') %>
+</body>
+</html> -->
+
+
+
+### pacientesLista.ejs ###
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/pacientes.css">
+  <title>Ortopedia Hamburgo - Pacientes</title>
+</head>
+
+<!--NIVEL 1:-->
+<body>
+
+  <%- include('../../partials/header') %>
+
+  <main>
+    <h2>Listado de Pacientes</h2>
+    <ul class="margen">
+      <% pacientes.forEach(function(paciente) { %>
+        <ul>
+          <div class="caja">
+          <a href="./pacientes/edita/<%=paciente.id%>" class="boton boton-editar">Editar </a>
+          <a href="./pacientes/baja/<%=paciente.id%>" class="boton boton-eliminar">Eliminar </a> 
+        <%= paciente.nombre %> <%= paciente.apellido %> || <%= paciente.edad %> años || <%= paciente.genero %> || <%= paciente.direccion %> || <%= paciente.patologia %> 
+          </ul>
+      <% }); %>
+    </div>
+    </ul>
+  </main>
+  <a href="./pacientes/alta" class="boton boton-crear">Crear pacientes</a>
+
+  <%- include('../../partials/footer') %>
+
+</body>
+</html>
+
+<!----------------------------------------------------------->
+<!--NIVEL 3:-->
+<!-- <body>
+
+  <%- include('../../partials/header') %>
+
+  <main>
+    <h2>Listado de Pacientes</h2>
+    <ul>
+      <% pacientes.forEach(function(paciente) { %>
+        <li><a href="./pacientes/edita/<%=paciente.id%>" class="boton boton-editar">Editar </a><a href="./pacientes/baja/<%=paciente.id%>" class="boton boton-eliminar">Eliminar </a> 
+        <%= paciente.apellido %> - Fecha de Nacimiento: <%= paciente.fecha %>  - <%= paciente.genero %>  </li>
+      <% }); %>
+    </ul>
+  </main>
+  <a href="./pacientes/alta" class="boton boton-crear">Crear pacientes</a>
+
+  <%- include('../../partials/footer') %>
+
+</body>
+</html> -->
+
+
+
+
+
+
+C:\Users\Pepe\Desktop\Nivel4Final\src\views\partials
+====================================================
+
+### footer.ejs ###
+<link rel="stylesheet" href="/css/footer.css"/>
+<footer class="pie">
+  <div class="contacto">
+    <span>&copy; 2024 Ortopedia Hamburgo || </span>
+    <span>📲 Tel: 654 757 033 | 601 488 868</span>
+    <span>✉️ Email: OrtopediaHamburgo@hotmail.com</span>
+  </div>
+</footer>
+
+
+
+### header.ejs ###
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/css/header.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ortopedia Hamburgo</title>
+</head>
+<body>
+  <header class="cabecera">
+    <h1>Ortopedia Hamburgo</h1>
+    <nav>
+      <a href="/">Inicio</a>
+      <a href="/pacientes">Pacientes</a>
+      <a href="/medicos">Médicos</a>
+      <a href="/organizacion">Centro</a>
+    </nav>
+  </header>
+

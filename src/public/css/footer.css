@@ -1,0 +1,12 @@
+/* Footer centrado en la parte inferior */
+.pie {
+    background-color: #58D68D; /* Verde pastel */
+    color: #333333;
+    text-align: center; /* Centra el texto dentro del contenedor */
+    padding: 15px 0; /* Espaciado vertical */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Hace que ocupe todo el ancho de la página */
+    font-size: 14px;
+}

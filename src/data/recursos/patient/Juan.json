@@ -1,0 +1,34 @@
+{
+  "resourceType": "Patient",
+  "identifier": [
+    {
+      "system": "http://example.org/identifiers",
+      "value": "99262014P"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Pérez",
+      "given": ["Juan"]
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1978-08-20",
+  "address": [
+    {
+      "text": "Calle Levante, 5"
+    }
+  ],
+  "extension": [
+    {
+      "url": "http://example.org/extensions/age",
+      "valueInteger": 30
+    },
+    {
+      "url": "http://example.org/extensions/pathology",
+      "valueString": "resfriado"
+    }
+  ]
+}

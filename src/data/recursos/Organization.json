@@ -1,0 +1,12 @@
+{
+  "resourceType": "Organization",
+  "name": "Ortopedia Hamburgo",
+  "contact": [
+      {
+          "telecom": [
+              { "system": "phone", "value": "654 757 033 | 601 488 868" },
+              { "system": "email", "value": "OrtopediaHamburgo@hotmail.com" }
+          ]
+      }
+  ]
+}

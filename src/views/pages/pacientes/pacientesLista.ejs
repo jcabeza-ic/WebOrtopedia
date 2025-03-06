@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/pacientes.css">
+  <title>Ortopedia Hamburgo - Pacientes</title>
+</head>
+
+<!--NIVEL 1:-->
+<body>
+
+  <%- include('../../partials/header') %>
+
+  <main>
+    <h2>Listado de Pacientes</h2>
+    <ul class="margen">
+      <% pacientes.forEach(function(paciente) { %>
+        <ul>
+          <div class="caja">
+          <a href="./pacientes/edita/<%=paciente.id%>" class="boton boton-editar">Editar </a>
+          <a href="./pacientes/baja/<%=paciente.id%>" class="boton boton-eliminar">Eliminar </a> 
+        <%= paciente.nombre %> <%= paciente.apellido %> || <%= paciente.edad %> años || <%= paciente.genero %> || <%= paciente.direccion %> || <%= paciente.patologia %> 
+          </ul>
+      <% }); %>
+    </div>
+    </ul>
+  </main>
+  <a href="./pacientes/alta" class="boton boton-crear">Crear pacientes</a>
+  <button onclick="recargarPacientes()" class="botoncito">Recargar Pacientes</button>
+
+<script>
+  function recargarPacientes() {
+    fetch('/pacientes/recargar', { method: 'POST' })
+      .then(response => {
+        if (response.ok) {
+          window.location.reload();
+        } else {
+          alert('Error al recargar la lista de pacientes');
+        }
+      })
+      .catch(error => console.error('Error:', error));
+  }
+</script>
+
+
+
+  <%- include('../../partials/footer') %>
+
+</body>
+</html>
+
+<!----------------------------------------------------------->
+<!--NIVEL 3:-->
+<!-- <body>
+
+  <%- include('../../partials/header') %>
+
+  <main>
+    <h2>Listado de Pacientes</h2>
+    <ul>
+      <% pacientes.forEach(function(paciente) { %>
+        <li><a href="./pacientes/edita/<%=paciente.id%>" class="boton boton-editar">Editar </a><a href="./pacientes/baja/<%=paciente.id%>" class="boton boton-eliminar">Eliminar </a> 
+        <%= paciente.apellido %> - Fecha de Nacimiento: <%= paciente.fecha %>  - <%= paciente.genero %>  </li>
+      <% }); %>
+    </ul>
+  </main>
+  <a href="./pacientes/alta" class="boton boton-crear">Crear pacientes</a>
+
+  <%- include('../../partials/footer') %>
+
+</body>
+</html> -->
+
+
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/altaPacientes.css">
+</head>
+
+<!--NIVEL 1:-->
+<body>
+    <%- include('../../partials/header') %>
+    <form method="POST" action="/pacientes/alta">
+
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre" class="input-field"/>
+        <label for="apellido">Apellido</label>
+        <input type="text" name="apellido" id="apellido"  class="input-field"/>
+        <label for="edad">Edad</label>
+        <input type="number" name="edad" id="edad" class="input-field"/>
+        <label for="genero">Genero</label>
+        <input type="text" name="genero" id="genero" class="input-field"/>
+        <label for="direccion">Dirección</label>
+        <input type="text" name="direccion" id="direccion" class="input-field"/>
+        <label for="patologia">Patología</label>
+        <input type="text" name="patologia" id="patologia" class="input-field"/>
+        <button type="submit" class="submit-button">Guardar</button>
+    </form>
+    <%- include('../../partials/footer') %>
+</body>
+</html>
+
+<!--------------------------------------------------->
+<!--NIVEL 3:-->
+<!-- <body>
+    <%- include('../../partials/header') %>
+    <form method="POST" action="/pacientes/alta">
+
+        <label for="apellido">Apellido</label>
+        <input type="text" name="apellido" id="apellido" />
+        <label for="fecha">Fecha de nacimiento</label>
+        <input type="date" name="fecha" id="fecha" />
+        <label for="genero">Género</label>
+        <select name="genero" id="genero">
+            <option value="male" >Hombre</option>
+            <option value="female" >Mujer</option>
+            <option value="unknown" >Prefiero no decirlo</option>
+            <option value="other" >Otro</option>
+        </select>
+        <button type="submit">Guardar</button>
+    </form>
+    <%- include('../../partials/footer') %>
+</body>
+</html> -->

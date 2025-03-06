@@ -1,0 +1,35 @@
+
+{
+      "resourceType": "Practitioner",
+      "identifier": [
+        {
+          "system": "http://example.org/identifiers",
+          "value": "87451698K"
+        }
+      ],
+      "active": true,
+      "name": [
+        {
+          "use": "official",
+          "family": "Sánchez",
+          "given": ["José"]
+        }
+      ],
+      "qualification": [
+        {
+          "code": {
+            "text": "Cardiólogo"
+          }
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://example.org/extensions/experience",
+          "valueInteger": 10
+        },
+        {
+          "url": "http://example.org/extensions/center",
+          "valueString": "Hospital San José"
+        }
+      ]
+    }

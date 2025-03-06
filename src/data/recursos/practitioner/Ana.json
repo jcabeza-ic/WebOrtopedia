@@ -1,0 +1,34 @@
+{
+    "resourceType": "Practitioner",
+    "identifier": [
+      {
+        "system": "http://example.org/identifiers",
+        "value": "12478156J"
+      }
+    ],
+    "active": true,
+    "name": [
+      {
+        "use": "official",
+        "family": "Martínez",
+        "given": ["Ana"]
+      }
+    ],
+    "qualification": [
+      {
+        "code": {
+          "text": "Pediatra"
+        }
+      }
+    ],
+    "extension": [
+      {
+        "url": "http://example.org/extensions/experience",
+        "valueInteger": 8
+      },
+      {
+        "url": "http://example.org/extensions/center",
+        "valueString": "Hospital San José"
+      }
+    ]
+  }

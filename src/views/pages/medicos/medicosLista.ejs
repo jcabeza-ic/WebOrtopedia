@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/medicos.css">
+  <title>Ortopedia Hamburgo - Médicos</title>
+</head>
+<!--NIVEL 1: -->
+<body>
+
+  <%- include('../../partials/header') %>
+
+  <main>
+    <h2>Listado de Médicos</h2>
+    <ul class="margen">
+      <% medicos.forEach(function(medico) { %>
+          <ul>
+            <div class="caja menor">
+            <a href="./medicos/edita/<%=medico.id%>" class="boton boton-editar">Editar </a>
+            <a href="./medicos/baja/<%=medico.id%>" class="boton boton-eliminar">Eliminar </a> 
+            <%= medico.nombre %> <%= medico.apellido %> || <%= medico.especialidad %> (<%= medico.experiencia %> años de experiencia) || <%= medico.centro %>
+          </ul>
+        <% }); %>
+      </div>
+    </ul>
+  </main>
+  <a href="./medicos/alta" class="boton boton-crear">Crear médicos</a>
+  <button onclick="recargarMedicos()" class="botoncito">Recargar Médicos</button>
+
+<script>
+  function recargarMedicos() {
+    fetch('/medicos/recargar', { method: 'POST' })
+      .then(response => {
+        if (response.ok) {
+          window.location.reload();
+        } else {
+          alert('Error al recargar la lista de médicos');
+        }
+      })
+      .catch(error => console.error('Error:', error));
+  }
+</script>
+
+  <%- include('../../partials/footer') %>
+
+</body>
+</html>
+
+<!---------------------------------------------------------->
+<!--NIVEL 2: -->
+<!-- <body>
+  <%- include('../../partials/header') %>
+
+  <main>
+    <h2>Listado de Apellidos de Médicos</h2>
+    <ul>
+      <% medicos.forEach(function(medico) { %>
+        <li>
+          <strong>Apellido:</strong> <%= medico.apellido %>
+          <a href="/medicos/edita/<%= medico.id %>" class="boton boton-editar">Editar</a>
+          <a href="/medicos/baja/<%= medico.id %>" class="boton boton-eliminar">Eliminar</a>
+        </li>
+      <% }); %>
+    </ul>
+    <a href="/medicos/alta" class="boton boton-crear">Crear nuevo médico</a>
+  </main>
+  
+  <%- include('../../partials/footer') %>
+</body>
+</html> -->
